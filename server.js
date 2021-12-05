@@ -63,8 +63,8 @@ app.delete( "/app/delete/user/:id", (req, res) => {
 	const stmt = db.prepare(
 	  `DELETE FROM userInfo WHERE id = ?`
 	);
-	const info = stmt.run( req.body.userId );
-	res.status(200).json( { "message" : info.changes + " record deleted: ID " + req.body.d + " (200)" } );
+	const info = stmt.run( req.body.id );
+	res.status(200).json( { "message" : info.changes + " record deleted: ID " + req.body.id + " (200)" } );
 });
 
 // Default response for any other request
