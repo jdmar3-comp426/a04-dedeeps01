@@ -55,7 +55,7 @@ app.patch("/app/update/user/:id", (req, res) => {
 	  WHERE id = ?`
 	);
 	const info = stmt.run( req.body.user, md5(req.body.pass), req.params.id );
-	res.status(200).json( { "message" : info.changes + " record updated: ID " + req.body.id + " (200)" } );
+	res.status(200).json( { "message" : info.changes + " record updated: ID " + req.params.id + " (200)" } );
 });
 
 // DELETE a single user (HTTP method DELETE) at endpoint /app/delete/user/:id
@@ -64,7 +64,7 @@ app.delete("/app/delete/user/:id", (req, res) => {
 	  `DELETE FROM userInfo WHERE id = ?`
 	);
 	const info = stmt.run(req.params.id);
-	res.status(200).json( { "message" : info.changes + " record deleted: ID " + req.body.id + " (200)" } );
+	res.status(200).json( { "message" : info.changes + " record deleted: ID " + req.params.id + " (200)" } );
 });
 
 // Default response for any other request
